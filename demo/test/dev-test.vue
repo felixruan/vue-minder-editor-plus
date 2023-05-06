@@ -26,6 +26,7 @@
       :priority-start-with-zero="true"
       @afterMount="afterMount()"
       :default-mold="3"
+      :del-confirm="delConfirm"
       @moldChange="handleMoldChange"
       @save="save"/>
   </div>
@@ -112,10 +113,14 @@ export default {
       console.log(data);
     },
     test() {
-      return false;
+      return true;
     },
     handleMoldChange(a) {
       // console.log(a);
+    },
+    delConfirm() {
+      console.log("-=-=-=-=-=-=-==");
+      minder.forceRemoveNode();
     },
     afterMount() {
       // minder.on('selectionchange ', function (env) {
@@ -147,6 +152,7 @@ export default {
       minder.on('beforeExecCommand', function (env) {
         console.log('beforeExecCommand');
         console.log(env);
+        return false;
       });
 
       this.addHotBox();

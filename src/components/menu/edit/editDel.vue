@@ -18,6 +18,7 @@
 <script>
 import {isDeleteDisableNode, isDisableNode, markDeleteNode} from "../../../script/tool/utils";
 import Locale from '/src/mixins/locale';
+import {delProps} from "../../../props";
 export default {
   name: 'edit_del',
   mixins: [Locale],
@@ -25,6 +26,9 @@ export default {
     return {
       minder: undefined
     }
+  },
+  props: {
+    ...delProps
   },
   mounted() {
     this.$nextTick(() => {
@@ -67,8 +71,11 @@ export default {
       if (this.removeNodeDisabled) {
         return;
       }
-      markDeleteNode(this.minder);
-      minder.queryCommandState('RemoveNode') === -1 || minder.execCommand('RemoveNode');
+      if (this.delConfirm) {
+        this.delConfirm();
+        return;
+      }
+      minder.forceRemoveNode();
     },
     editNode() {
       let editor = minderEditor;

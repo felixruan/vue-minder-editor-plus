@@ -29,9 +29,7 @@ export default {
     commandDisabled() {
       let minder = this.minder;
       if (!minder) return true;
-      minder.on && minder.on('interactchange', function () {
-        this.commandValue = minder.queryCommandValue('resource');
-      });
+
       let node = minder.getSelectedNode();
       if (node && node.data.allowDisabledTag) {
         return false;
@@ -65,24 +63,39 @@ export default {
           return;
         }
       }
-      let origin = this.minder.queryCommandValue('resource');
-      if (!resourceName || !/\S/.test(resourceName)) return;
-      let index = origin.indexOf(resourceName);
-      // 先删除排他的标签
-      if (this.distinctTags.indexOf(resourceName) > -1) {
-        for (let i = 0; i < origin.length; i++) {
-          if (this.distinctTags.indexOf(origin[i]) > -1) {
-            origin.splice(i, 1);
-            i--;
-          }
+
+      if (!resourceName || !/\S/.test(resourceName)) {
+        return;
+      };
+
+      let nodes = minder.getSelectedNodes();
+      nodes.forEach(node => {
+        let origin = node.data.resource;
+        if (node.data.disable) {
+          return;
         }
-      }
-      if (index != -1) {
-        origin.splice(index, 1);
-      } else {
-        origin.push(resourceName);
-      }
-      this.minder.execCommand('resource', origin);
+        if (origin) {
+          let index = origin.indexOf(resourceName);
+          // 先删除排他的标签
+          if (this.distinctTags.indexOf(resourceName) > -1) {
+            for (let i = 0; i < origin.length; i++) {
+              if (this.distinctTags.indexOf(origin[i]) > -1) {
+                origin.splice(i, 1);
+                i--;
+              }
+            }
+          }
+          if (index != -1) {
+            origin.splice(index, 1);
+          } else {
+            origin.push(resourceName);
+          }
+        } else {
+          node.data.resource = [resourceName];
+        }
+        node.render();
+      });
+      minder.layout(200);
     },
   },
 }

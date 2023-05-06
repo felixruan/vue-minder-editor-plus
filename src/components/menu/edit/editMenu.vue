@@ -4,7 +4,7 @@
     <selection/>
     <insert-box/>
     <move-box :move-enable="moveEnable"/>
-    <edit-del/>
+    <edit-del :del-confirm="delConfirm"/>
     <sequence-box
       v-if="sequenceEnable"
       :prefix="priorityPrefix"
@@ -32,7 +32,7 @@ import progressBox from './progressBox'
 import expand from './expand'
 import selection from './selection'
 import TagBox from "./tagBox";
-import {editMenuProps, priorityProps, tagProps} from "../../../props";
+import {delProps, editMenuProps, priorityProps, tagProps} from "../../../props";
 import Locale from '/src/mixins/locale';
 
 export default {
@@ -51,7 +51,8 @@ export default {
   props: {
     ...editMenuProps,
     ...priorityProps,
-    ...tagProps
+    ...tagProps,
+    ...delProps
   },
 }
 </script>

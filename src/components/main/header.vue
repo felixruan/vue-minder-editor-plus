@@ -17,6 +17,7 @@
             :priority-start-with-zero="priorityStartWithZero"
             :tags="tags"
             :distinct-tags="distinctTags"
+            :del-confirm="delConfirm"
           />
         </div>
       </el-tab-pane>
@@ -36,7 +37,7 @@
   import editMenu from '../menu/edit/editMenu'
   import viewMenu from '../menu/view/viewMenu'
   import Locale from '/src/mixins/locale';
-  import {editMenuProps, moleProps, priorityProps, tagProps} from "../../props";
+  import {delProps, editMenuProps, moleProps, priorityProps, tagProps} from "../../props";
   export default {
     name: 'headerVue',
     mixins: [Locale],
@@ -54,6 +55,7 @@
       ...priorityProps,
       ...tagProps,
       ...moleProps,
+      ...delProps,
       minder: {}
     },
     components: {

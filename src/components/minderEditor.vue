@@ -14,6 +14,7 @@
       :priority-disable-check="priorityDisableCheck"
       :distinct-tags="distinctTags"
       :default-mold="defaultMold"
+      :del-confirm="delConfirm"
       @moldChange="handleMoldChange"
     />
     <main-editor
@@ -36,7 +37,7 @@
 <script>
 import headerMenu from './main/header'
 import mainEditor from './main/mainEditor'
-import {editMenuProps, mainEditorProps, moleProps, priorityProps, tagProps} from "../props";
+import {delProps, editMenuProps, mainEditorProps, moleProps, priorityProps, tagProps} from "../props";
 import Locale from '/src/mixins/locale';
 
 export default {
@@ -64,8 +65,12 @@ export default {
     ...priorityProps,
     ...tagProps,
     ...moleProps,
-    ...mainEditorProps
+    ...mainEditorProps,
+    ...delProps
   },
+  mounted() {
+    window.minderProps = this._props;
+  }
 }
 
 </script>

@@ -8,7 +8,7 @@
 <script>
   import {editMenuProps, mainEditorProps, priorityProps} from "../../props";
 import Navigator from "./navigator";
-import {markChangeNode} from "../../script/tool/utils";
+  import {markChangeNode, markDeleteNode} from "../../script/tool/utils";
 import Locale from '/src/mixins/locale';
 export default {
   components: {Navigator},
@@ -34,6 +34,11 @@ export default {
     window.minder = window.km = editor.minder;
     window.minderEditor = editor;
     window.minder.moveEnable = this.moveEnable;
+
+    window.minder.forceRemoveNode = () => {
+      markDeleteNode(minder);
+      minder.execCommand('RemoveNode');
+    };
 
     window.minder.on('preExecCommand', function (env) {
       let selectNodes = env.minder.getSelectedNodes();
