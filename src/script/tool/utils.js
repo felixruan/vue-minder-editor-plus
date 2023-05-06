@@ -9,6 +9,13 @@ export function isDisableNode(minder) {
   return false;
 }
 
+export function isDisableForNode(node) {
+  if (node && node.data.disable === true) {
+    return true;
+  }
+  return false;
+}
+
 export function isDeleteDisableNode(minder) {
   let node = undefined;
   if (minder && minder.getSelectedNode) {
@@ -25,7 +32,14 @@ export function isTagEnable(minder) {
   if (minder && minder.getSelectedNode) {
     node = minder.getSelectedNode();
   }
-  if (node && node.data.tagEnable === true) {
+  if (isTagEnableNode(node)) {
+    return true;
+  }
+  return false;
+}
+
+export function isTagEnableNode(node) {
+  if (node && (node.data.tagEnable === true || node.data.allowDisabledTag === true)) {
     return true;
   }
   return false;

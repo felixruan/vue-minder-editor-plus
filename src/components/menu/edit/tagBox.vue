@@ -11,7 +11,7 @@
 <script>
 
 import {tagProps} from "../../../props";
-import {isDisableNode, isTagEnable} from "../../../script/tool/utils";
+import {isDisableForNode, isDisableNode, isTagEnable, isTagEnableNode} from "../../../script/tool/utils";
 import Locale from '/src/mixins/locale';
 
 export default {
@@ -31,9 +31,6 @@ export default {
       if (!minder) return true;
 
       let node = minder.getSelectedNode();
-      if (node && node.data.allowDisabledTag) {
-        return false;
-      }
       if (isDisableNode(minder) && !isTagEnable(minder)) {
         return true;
       }
@@ -71,7 +68,7 @@ export default {
       let nodes = minder.getSelectedNodes();
       nodes.forEach(node => {
         let origin = node.data.resource;
-        if (node.data.disable) {
+        if (isDisableForNode(node) && !isTagEnableNode(node)) {
           return;
         }
         if (origin) {

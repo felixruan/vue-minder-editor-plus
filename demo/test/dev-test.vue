@@ -73,9 +73,10 @@ export default {
                     disable: true,
                     allowDelete: true,
                     // tagEnable: true,
-                    // allowDisabledTag: true,
+                    allowDisabledTag: true,
                     resource: ["模块12"],
-                    priority: 3
+                    priority: 3,
+                    loaded: true
                   }
                 }]
             },
