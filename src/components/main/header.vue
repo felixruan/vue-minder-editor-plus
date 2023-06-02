@@ -24,8 +24,13 @@
       <el-tab-pane :label="t('minder.main.header.style')" name="viewMenu">
         <div class="mind-tab-panel">
           <view-menu
+            v-if="viewMenuEnable"
             @moldChange="handleMoldChange"
             :minder="minder"
+            :arrange-enable="arrangeEnable"
+            :mold-enable="moldEnable"
+            :font-enable="fontEnable"
+            :style-enable="styleEnable"
             :default-mold="defaultMold"/>
         </div>
       </el-tab-pane>
@@ -37,7 +42,7 @@
   import editMenu from '../menu/edit/editMenu'
   import viewMenu from '../menu/view/viewMenu'
   import Locale from '/src/mixins/locale';
-  import {delProps, editMenuProps, moleProps, priorityProps, tagProps} from "../../props";
+  import {delProps, editMenuProps, moleProps, priorityProps, tagProps, viewMenuProps} from "../../props";
   export default {
     name: 'headerVue',
     mixins: [Locale],
@@ -56,6 +61,7 @@
       ...tagProps,
       ...moleProps,
       ...delProps,
+      ...viewMenuProps,
       minder: {}
     },
     components: {

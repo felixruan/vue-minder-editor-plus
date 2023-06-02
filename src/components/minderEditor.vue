@@ -15,6 +15,10 @@
       :distinct-tags="distinctTags"
       :default-mold="defaultMold"
       :del-confirm="delConfirm"
+      :arrange-enable="arrangeEnable"
+      :mold-enable="moldEnable"
+      :font-enable="fontEnable"
+      :style-enable="styleEnable"
       @moldChange="handleMoldChange"
     />
     <main-editor
@@ -37,7 +41,7 @@
 <script>
 import headerMenu from './main/header'
 import mainEditor from './main/mainEditor'
-import {delProps, editMenuProps, mainEditorProps, moleProps, priorityProps, tagProps} from "../props";
+import {delProps, editMenuProps, mainEditorProps, moleProps, priorityProps, tagProps, viewMenuProps} from "../props";
 import Locale from '/src/mixins/locale';
 
 export default {
@@ -66,7 +70,8 @@ export default {
     ...tagProps,
     ...moleProps,
     ...mainEditorProps,
-    ...delProps
+    ...delProps,
+    ...viewMenuProps,
   },
   mounted() {
     window.minderProps = this._props;

@@ -183,7 +183,7 @@ default: 3
 type: Boolean <br>
 default: true
 
-是否优先级功能
+是否启用优先级功能
 
 #### tagEnable
 type: Boolean <br>
@@ -203,10 +203,40 @@ default: true
 
 是否启用上移下移功能
 
+#### viewMenuEnable
+type: Boolean <br>
+default: true
+
+是否启用外观样式
+
+#### moldEnable
+type: Boolean <br>
+default: true
+
+是否启用展示模式
+
+#### arrangeEnable
+type: Boolean <br>
+default: true
+
+是否启用整理布局
+
+#### styleEnable
+type: Boolean <br>
+default: true
+
+是否启用样式编辑
+
+#### fontEnable
+type: Boolean <br>
+default: true
+
+是否启用字体编辑
+
 ### 优先级配置
 #### priorityCount <br>
 type Number <br>
-Default: 4
+default: 4
 
 优先级最大显示数量，最多支持显示 9 个级别
 

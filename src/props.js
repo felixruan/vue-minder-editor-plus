@@ -97,6 +97,29 @@ export let editMenuProps = {
   },
 }
 
+export let viewMenuProps = {
+  viewMenuEnable: {
+    type: Boolean,
+    default: true
+  },
+  moldEnable: {
+    type: Boolean,
+    default: true
+  },
+  arrangeEnable: {
+    type: Boolean,
+    default: true
+  },
+  styleEnable: {
+    type: Boolean,
+    default: true
+  },
+  fontEnable: {
+    type: Boolean,
+    default: true
+  },
+}
+
 export let moleProps = {
   // 默认样式
   defaultMold: {

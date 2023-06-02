@@ -27,6 +27,10 @@
       @afterMount="afterMount()"
       :default-mold="3"
       :del-confirm="delConfirm"
+      :style-enable="true"
+      :arrange-enable="true"
+      :mold-enable="true"
+      :font-enable="true"
       @moldChange="handleMoldChange"
       @save="save"/>
   </div>

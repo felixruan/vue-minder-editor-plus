@@ -1,10 +1,10 @@
 <template>
   <div class="menu-container">
-    <mold :default-mold="defaultMold" @moldChange="handleMoldChange"/>
+    <mold v-if="moldEnable" :default-mold="defaultMold" @moldChange="handleMoldChange"/>
     <!--  <theme/>-->
-    <arrange/>
-    <styleOperation/>
-    <fontOperation/>
+    <arrange v-if="arrangeEnable"/>
+    <styleOperation v-if="styleEnable"/>
+    <fontOperation v-if="fontEnable"/>
   </div>
 
 </template>
@@ -15,7 +15,7 @@ import theme from './theme'
 import arrange from './arrange'
 import styleOperation from './styleOperation'
 import fontOperation from './fontOperation.vue'
-import {moleProps} from "../../../props";
+import {moleProps, viewMenuProps} from "../../../props";
 import Locale from '/src/mixins/locale';
 
 export default {
@@ -30,6 +30,7 @@ export default {
   },
   props: {
     ...moleProps,
+    ...viewMenuProps,
     minder: {}
   },
   methods: {
