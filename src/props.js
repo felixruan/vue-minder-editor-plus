@@ -95,6 +95,10 @@ export let editMenuProps = {
     type: Boolean,
     default: true
   },
+  moveConfirm: {
+    type: Function,
+    default: null
+  },
 }
 
 export let viewMenuProps = {

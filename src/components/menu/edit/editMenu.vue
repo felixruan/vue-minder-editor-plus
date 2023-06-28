@@ -3,7 +3,7 @@
     <expand/>
     <selection/>
     <insert-box/>
-    <move-box :move-enable="moveEnable"/>
+    <move-box :move-enable="moveEnable" :move-confirm="moveConfirm"/>
     <edit-del :del-confirm="delConfirm"/>
     <sequence-box
       v-if="sequenceEnable"
@@ -34,11 +34,13 @@ import selection from './selection'
 import TagBox from "./tagBox";
 import {delProps, editMenuProps, priorityProps, tagProps} from "../../../props";
 import Locale from '/src/mixins/locale';
+import mainEditor from "../../main/mainEditor.vue";
 
 export default {
   name: 'editMenu',
   mixins: [Locale],
   components: {
+    mainEditor,
     TagBox,
     insertBox,
     moveBox,

@@ -17,7 +17,7 @@ import Locale from '/src/mixins/locale';
 export default {
   name: 'moveBox',
   mixins: [Locale],
-  props: ['moveEnable'],
+  props: ['moveEnable', 'moveConfirm'],
   data() {
     return {
       minder: undefined
@@ -41,7 +41,23 @@ export default {
   },
   methods: {
     execCommand(command) {
-      minder.queryCommandState(command) === -1 || minder.execCommand(command)
+      if (command === 'ArrangeUp') {
+        if (this.arrangeUpDisabled) {
+          return;
+        }
+      } else if (command === 'ArrangeDown') {
+        if (this.arrangeDownDisabled) {
+          return;
+        }
+      }
+      if (this.moveConfirm) {
+        // 确认可以移动后，执行移动
+        if (this.moveConfirm()) {
+          minder.queryCommandState(command) === -1 || minder.execCommand(command)
+        }
+      } else {
+        minder.queryCommandState(command) === -1 || minder.execCommand(command)
+      }
     },
     isDisabled(command) {
       try {

@@ -16,6 +16,7 @@
             :priority-disable-check="priorityDisableCheck"
             :priority-start-with-zero="priorityStartWithZero"
             :tags="tags"
+            :move-confirm="moveConfirm"
             :distinct-tags="distinctTags"
             :del-confirm="delConfirm"
           />
@@ -43,6 +44,7 @@
   import viewMenu from '../menu/view/viewMenu'
   import Locale from '/src/mixins/locale';
   import {delProps, editMenuProps, moleProps, priorityProps, tagProps, viewMenuProps} from "../../props";
+  import mainEditor from "./mainEditor.vue";
   export default {
     name: 'headerVue',
     mixins: [Locale],
@@ -65,6 +67,7 @@
       minder: {}
     },
     components: {
+      mainEditor,
       editMenu,
       viewMenu
     },

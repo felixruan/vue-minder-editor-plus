@@ -8,6 +8,7 @@
       :priority-prefix="priorityPrefix"
       :priority-start-with-zero="priorityStartWithZero"
       :tags="tags"
+      :move-confirm="moveConfirm"
       :move-enable="moveEnable"
       :tag-edit-check="tagEditCheck"
       :tag-disable-check="tagDisableCheck"
@@ -32,6 +33,7 @@
       :tags="tags"
       :priority-count="priorityCount"
       :priority-prefix="priorityPrefix"
+      :move-confirm="moveConfirm"
       :priority-start-with-zero="priorityStartWithZero"
       @afterMount="$emit('afterMount')"
       @save="save"/>

@@ -17,6 +17,7 @@
       :sequence-enable="true"
       :tags="tags"
       :move-enable="true"
+      :move-confirm="moveConfirm"
       :disabled="false"
       :distinct-tags="distinctTags"
       :height="500"
@@ -180,6 +181,9 @@ export default {
         beforeShow: function () {
         }
       })
+    },
+    moveConfirm() {
+      return true;
     }
   }
 }
